@@ -11,14 +11,15 @@ class HeroCatalog extends Component {
 	constructor(props) {
 		super(props)
 		// Will mount
-		props.requestCatalog(props.page)
+		const {page, match:{params:{ name }}} = this.props
+		props.requestCatalog(page, name)
 	}
 
 	componentDidUpdate(prevProps) {
-		const {page} = this.props
+		const {requestCatalog, page, match: {params:{ name }}} = this.props
 
-		if(prevProps.page !== page)
-			this.props.requestCatalog(page)
+		if(prevProps.page !== page || prevProps.match.params.name !== name)
+			requestCatalog(page, name)
 	}
 
 	render() {
@@ -29,7 +30,6 @@ class HeroCatalog extends Component {
 						heroesList,
 						heroesTotal,
 						page,
-						attributionHTML,
 						isRequesting,
 						error,
 						changeCatalogPage,
@@ -42,11 +42,10 @@ class HeroCatalog extends Component {
 			return <div>{error}</div> // TODO create error component
 
 		if(!heroesList)
-			return '' // TODO
+			return <div>Not found</div> // TODO not fount
 
 		return (
 			<main>
-				<header></header>
 				<section>
 					{heroesList.map((hero, index) =>
 						<HeroCard
@@ -68,7 +67,6 @@ class HeroCatalog extends Component {
 						List={PaginationList}
 						paginationLength={6}
 					/>
-					<div dangerouslySetInnerHTML={{__html: attributionHTML}} />
 				</footer>
 			</main>
 		)

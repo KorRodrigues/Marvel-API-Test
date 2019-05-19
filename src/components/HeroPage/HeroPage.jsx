@@ -13,7 +13,6 @@ class HeroPage extends Component {
 	render() {
 		const {
 						data,
-						attributionHTML,
 						alreadyFetched,
 						loading,
 						error,
@@ -38,9 +37,6 @@ class HeroPage extends Component {
 			<main>
 				<div>{name}</div>
 				<div>{description}</div>
-				<footer>
-					<div dangerouslySetInnerHTML={{__html: attributionHTML}}/>
-				</footer>
 			</main>
 		)
 	}

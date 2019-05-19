@@ -1,6 +1,5 @@
-import getHeroes from '../services/getHeroes'
 import _get from '../services/_get'
-
+import getHeroesCatalog from '../services/getHeroes'
 
 export const CATALOG_REQUESTED = 'heroCatalog/CATALOG_REQUESTED'
 export const CATALOG = 'heroCatalog/CATALOG'
@@ -54,14 +53,14 @@ export default (state = initialState, action) => {
 // ************* //
 
 
-export const requestCatalog = (page = 1) => {
+export const requestCatalog = (page = 1, searchTerm = '') => {
   return dispatch => {
     dispatch({
       type: CATALOG_REQUESTED
     })
-
-    return getHeroes(
+    return getHeroesCatalog(
 			page,
+			searchTerm,
 			(catalog) => {
 				dispatch({
 					type: CATALOG,

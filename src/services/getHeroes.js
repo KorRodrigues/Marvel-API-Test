@@ -4,12 +4,13 @@ const CHARACTERS = '/v1/public/characters'
 
 // TODO add fetch polyfill on index or shared file
 
-function getHeroesCatalog(page, callback, callbackError) {
+function getHeroesCatalog(page, searchTerm, callback, callbackError) {
 	const apiUrl = `${config.baseUrl}${CHARACTERS}`,
-				key = config.apiKey,
-				limit = config.itemsPerPage,
-				offset = (page - 1) * config.itemsPerPage,
-				url = `${apiUrl}?apikey=${key}&limit=${limit}&offset=${offset}`
+				key = `?apikey=${config.apiKey}`,
+				limit = `&limit=${config.itemsPerPage}`,
+				offset = `&offset=${(page - 1) * config.itemsPerPage}`,
+				nameStartsWith = searchTerm ? `&nameStartsWith=${searchTerm}` : '',
+				url = `${apiUrl}${key}${limit}${offset}${searchTerm}${nameStartsWith}`
 	fetch(url)
 		.then(response => response.json())
 		.then((json) => callback(json))
