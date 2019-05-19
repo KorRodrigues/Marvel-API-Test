@@ -29,7 +29,7 @@ const SimplePage = ({children, classes}) => (
 
 
 		<Grid container>
-			<Grid item xs>
+			<Grid item xs className={classes.content}>
 				{children}
 			</Grid>
 		</Grid>

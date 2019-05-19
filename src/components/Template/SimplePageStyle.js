@@ -8,7 +8,17 @@ const styles = theme => ({
 	},
 	logo: {
 		display: 'block',
-		maxHeight: '50px',
+		maxHeight: '27px',
+		[theme.breakpoints.up('xs')]: {
+			maxHeight: '50px',
+		},
+	},
+	content: {
+		paddingTop: '130px',
+		paddingBottom: '50px',
+		[theme.breakpoints.up('xs')]: {
+			paddingTop: '100px',
+		},
 	},
 	footer: {
 		background: theme.palette.secondary.main,
