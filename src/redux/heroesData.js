@@ -18,10 +18,10 @@ export default (state = initialState, action) => {
 			heroesData[action.heroId] = { loading: false, error: action.error }
 			return heroesData
 		case HERO_ADDED:
-			heroesData[action.heroId] = { loading: false, error: '', ...action.heroData }
+			heroesData[action.heroId] = { ...action.heroData, loading: false, error: '' }
 			return heroesData
 		case HERO_DETAIL_CHANGE:
-			heroesData[action.heroId][action.field] = action.value
+			heroesData[action.heroId] = { ...heroesData[action.heroId], ...action.heroData }
 			return heroesData
 
     default:
@@ -49,7 +49,7 @@ export const requestHero = (heroId) => {
 				dispatch({
 					type: HERO_ADDED,
 					heroId,
-					heroData,
+					heroData: heroData.data.results[0],
 				})
 			},
 			() => {
@@ -64,13 +64,12 @@ export const requestHero = (heroId) => {
   }
 }
 
-export const changeHeroDetail = (heroId, field, value) => {
+export const changeHeroDetail = (heroId, heroData) => {
   return dispatch => {
     dispatch({
 			type: HERO_DETAIL_CHANGE,
 			heroId,
-			field,
-			value,
+			heroData,
     })
   }
 }

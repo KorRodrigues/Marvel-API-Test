@@ -80,7 +80,7 @@ export const requestCatalog = (page = 1, searchTerm = '') => {
 export const changeCatalogPage = (page) => {
   return dispatch => {
     dispatch({
-			type: CATALOG_REQUESTED,
+			type: CATALOG_PAGE,
 			page,
     })
   }
