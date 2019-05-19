@@ -2,10 +2,10 @@ import getHeroes from '../services/getHeroes'
 import _get from '../services/_get'
 
 
-export const CATALOG_REQUESTED = 'catalog/CATALOG_REQUESTED'
-export const CATALOG = 'counter/CATALOG'
-export const CATALOG_REQUEST_ERROR = 'counter/CATALOG_REQUEST_ERROR'
-export const CATALOG_PAGE = 'counter/CATALOG_PAGE'
+export const CATALOG_REQUESTED = 'heroCatalog/CATALOG_REQUESTED'
+export const CATALOG = 'heroCatalog/CATALOG'
+export const CATALOG_REQUEST_ERROR = 'heroCatalog/CATALOG_REQUEST_ERROR'
+export const CATALOG_PAGE = 'heroCatalog/CATALOG_PAGE'
 
 const initialState = {
   catalog: null,

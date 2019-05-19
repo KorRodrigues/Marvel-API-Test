@@ -7,8 +7,9 @@ import {
 	changeCatalogPage,
 } from '../../redux/heroCatalog'
 
-
-const mapStateToProps = ({heroCatalog:{ catalog, page, catalogRequestError, isRequestingCatalog }}) => {
+const mapStateToProps = (
+	{ heroCatalog: { catalog, page, catalogRequestError, isRequestingCatalog }}
+) => {
 	const heroesList = (catalog && catalog.data && catalog.data.results) || [],
 				heroesTotal = (catalog && catalog.data && catalog.data.total) || 0,
 				attributionHTML = (catalog && catalog.attributionHTML) || ''

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import marvelConfig from '../../services/marvelConfigs'
 
-import HeroCard from './HeroCard'
+import HeroCard from './HeroCardConnected'
 import Pagination from '../Pagination/Container/PaginationContainer'
 import PaginationList from '../Pagination/view/List'
 import PaginationListItem from '../Pagination/view/Item'
@@ -53,7 +53,7 @@ class HeroCatalog extends Component {
 							key={index}
 							id={hero.id}
 							name={hero.name}
-							image={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
+							image={hero.thumbnail}
 						/>
 					)}
 				</section>

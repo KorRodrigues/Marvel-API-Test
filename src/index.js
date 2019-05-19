@@ -8,6 +8,7 @@ import store, { history } from './store'
 
 import SimplePage from './components/Template/SimplePage'
 import HeroCatalog from './components/HeroCatalog/HeroCatalogConnected'
+import HeroPage from './components/HeroPage/HeroPageConnected'
 
 import './index.css'
 
@@ -21,7 +22,8 @@ if (element)
 				<SimplePage>
 
 					<Switch>
-						<Route exact path="/character/:characterId" component={HeroCatalog} />
+						<Route exact path="/character/edit/:heroId" component={HeroPage} />
+						<Route exact path="/character/:heroId" component={HeroPage} />
 						<Route exact path="/" component={HeroCatalog} />
 						<Route component={() => "PAGE 404"} /> {/* TODO 404 */}
 					</Switch>
