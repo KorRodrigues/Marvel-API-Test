@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
+import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 
 import marvelConfig from '../../services/marvelConfigs'
 import Pagination from '../Pagination/Container/PaginationContainer'
@@ -9,7 +11,11 @@ import PaginationList from '../Pagination/view/List'
 import PaginationListItem from '../Pagination/view/Item'
 import HeroCard from './HeroCardConnected'
 
-function styles() {}
+const styles = theme => ({
+	footer: {
+		marginTop: 32,
+	}
+})
 
 class HeroCatalog extends Component {
 	constructor(props) {
@@ -20,10 +26,14 @@ class HeroCatalog extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		const {requestCatalog, page, match: {params:{ name }}} = this.props
+		const {changeCatalogPage, requestCatalog, page, match: {params:{ name }}} = this.props
 
-		if(prevProps.page !== page || prevProps.match.params.name !== name)
+		if(prevProps.page !== page)
 			requestCatalog(page, name)
+		if(prevProps.match.params.name !== name) {
+			changeCatalogPage(1)
+			requestCatalog(1, name)
+		}
 	}
 
 	render() {
@@ -37,6 +47,8 @@ class HeroCatalog extends Component {
 						isRequesting,
 						error,
 						changeCatalogPage,
+						location,
+						classes,
 					} = props
 
 		if(isRequesting)
@@ -64,15 +76,17 @@ class HeroCatalog extends Component {
 					</Grid>
 				</section>
 				{heroesTotal > marvelConfig.itemsPerPage &&
-					<footer>
+					<footer className={classes.footer}>
 						<Pagination
 							curPage={page}
 							itemsMax={heroesTotal}
 							itemsPerPage={marvelConfig.itemsPerPage}
-							href={''}
+							href={location.pathname}
 							changePage={changeCatalogPage}
 							Item={PaginationListItem}
 							List={PaginationList}
+							PrevContent={ArrowBackIos}
+							NextContent={ArrowForwardIos}
 							paginationLength={6}
 						/>
 					</footer>

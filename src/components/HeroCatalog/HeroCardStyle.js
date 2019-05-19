@@ -9,6 +9,9 @@ const styles = theme => ({
 	cardTitle: {
 		height: '2.9rem',
 		overflow: 'hidden'
+	},
+	cardFooter: {
+		marginTop: 32,
 	}
 })
 

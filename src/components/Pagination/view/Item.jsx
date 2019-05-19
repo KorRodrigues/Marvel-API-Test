@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { definePageItemNumberInUrl } from '../services'
+
+import Button from '@material-ui/core/Button'
 
 class Item extends Component {
 	changePage = e => {
-		e.preventDefault()
 		const { page, onChangePage, pageLength } = this.props
 
 		if (page <= 0 || page > pageLength) return
@@ -16,31 +16,16 @@ class Item extends Component {
 		const {
 			children,
 			curPage,
-			href,
-			isDisabled,
-			isPrevNextBtn,
 			page,
-			pageLength,
 		} = this.props
 		return (
-			<li
-				className={
-					`bf-pagination__item ${
-					!!isPrevNextBtn && 'bf-pagination__item--prevNextBtn'} ${
-					curPage === page &&'bf-pagination__item--active'} ${
-					!!isDisabled && 'bf-pagination__item--disabled'}`}
+			<Button
+				variant={curPage === page ? "outlined" : "text"}
+				onClick={this.changePage}
 				itemProp="url"
 			>
-				<a
-					//rel="next"
-					className="bf-pagination__link"
-					onClick={this.changePage}
-					href={definePageItemNumberInUrl(href, page, pageLength)}
-					itemProp="name"
-				>
-					{children}
-				</a>
-			</li>
+				{children}
+			</Button>
 		)
 	}
 }
