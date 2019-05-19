@@ -24,6 +24,7 @@ if (element)
 					<Switch>
 						<Route exact path="/character/edit/:heroId" component={HeroPage} />
 						<Route exact path="/character/:heroId" component={HeroPage} />
+						<Route exact path="/:name" component={HeroCatalog} />
 						<Route exact path="/" component={HeroCatalog} />
 						<Route component={() => "PAGE 404"} /> {/* TODO 404 */}
 					</Switch>
