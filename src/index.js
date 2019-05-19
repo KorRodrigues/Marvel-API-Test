@@ -9,6 +9,7 @@ import store, { history } from './store'
 import SimplePage from './components/Template/SimplePage'
 import HeroCatalog from './components/HeroCatalog/HeroCatalogConnected'
 import HeroPage from './components/HeroPage/HeroPageConnected'
+import HeroEdit from './components/HeroEdit/HeroEditConnected'
 
 import './index.css'
 
@@ -22,7 +23,7 @@ if (element)
 				<SimplePage>
 
 					<Switch>
-						<Route exact path="/character/edit/:heroId" component={HeroPage} />
+						<Route exact path="/character/edit/:heroId" component={HeroEdit} />
 						<Route exact path="/character/:heroId" component={HeroPage} />
 						<Route exact path="/:name" component={HeroCatalog} />
 						<Route exact path="/" component={HeroCatalog} />

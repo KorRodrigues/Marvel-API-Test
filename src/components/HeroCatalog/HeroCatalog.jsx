@@ -52,22 +52,24 @@ class HeroCatalog extends Component {
 							key={index}
 							id={hero.id}
 							name={hero.name}
-							image={hero.thumbnail}
+							thumbnail={hero.thumbnail}
 						/>
 					)}
 				</section>
-				<footer>
-					<Pagination
-						curPage={page}
-						itemsMax={heroesTotal}
-						itemsPerPage={marvelConfig.itemsPerPage}
-						href={''}
-						changePage={changeCatalogPage}
-						Item={PaginationListItem}
-						List={PaginationList}
-						paginationLength={6}
-					/>
-				</footer>
+				{heroesTotal > marvelConfig.itemsPerPage &&
+					<footer>
+						<Pagination
+							curPage={page}
+							itemsMax={heroesTotal}
+							itemsPerPage={marvelConfig.itemsPerPage}
+							href={''}
+							changePage={changeCatalogPage}
+							Item={PaginationListItem}
+							List={PaginationList}
+							paginationLength={6}
+						/>
+					</footer>
+				}
 			</main>
 		)
 	}

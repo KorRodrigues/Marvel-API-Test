@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class HeroPage extends Component {
 	constructor(props) {
@@ -12,7 +13,6 @@ class HeroPage extends Component {
 
 	render() {
 		const {
-						data,
 						alreadyFetched,
 						loading,
 						error,
@@ -25,16 +25,17 @@ class HeroPage extends Component {
 			return <div>{error}</div> //TODO tela de erro
 
 		const {
-						// id,
+						id,
 						name,
 						description,
 						// thumbnail,
 						// series,
 						// urls,
-					} = data.results[0]
+					} = this.props
 
 		return (
 			<main>
+				<Link to={`/character/edit/${id}`}>Editar</Link>
 				<div>{name}</div>
 				<div>{description}</div>
 			</main>

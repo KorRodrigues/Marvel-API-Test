@@ -1,9 +1,10 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import HeroPage from './HeroPage'
+import HeroEdit from './HeroEdit'
 import {
 	requestHero,
+	changeHeroDetail,
 } from '../../redux/heroesData'
 
 const mapStateToProps = ({ heroesData }, ownProps) => {
@@ -23,6 +24,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
 			requestHero,
+			changeHeroDetail,
     },
     dispatch
   )
@@ -30,4 +32,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HeroPage)
+)(HeroEdit)
