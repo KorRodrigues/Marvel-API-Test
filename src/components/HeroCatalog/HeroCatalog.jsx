@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 
-import marvelConfig from '../../services/marvelConfigs'
+import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
 
-import HeroCard from './HeroCardConnected'
+import marvelConfig from '../../services/marvelConfigs'
 import Pagination from '../Pagination/Container/PaginationContainer'
 import PaginationList from '../Pagination/view/List'
 import PaginationListItem from '../Pagination/view/Item'
+import HeroCard from './HeroCardConnected'
+
+function styles() {}
 
 class HeroCatalog extends Component {
 	constructor(props) {
@@ -47,14 +51,17 @@ class HeroCatalog extends Component {
 		return (
 			<main>
 				<section>
-					{heroesList.map((hero, index) =>
-						<HeroCard
-							key={index}
-							id={hero.id}
-							name={hero.name}
-							thumbnail={hero.thumbnail}
-						/>
-					)}
+					<Grid container spacing={16}>
+						{heroesList.map((hero, index) =>
+							<Grid item xs sm={6} md={4} lg={3} key={index}>
+								<HeroCard
+									id={hero.id}
+									name={hero.name}
+									thumbnail={hero.thumbnail}
+								/>
+							</Grid>
+						)}
+					</Grid>
 				</section>
 				{heroesTotal > marvelConfig.itemsPerPage &&
 					<footer>
@@ -77,4 +84,4 @@ class HeroCatalog extends Component {
 
 // Todo add proptypes
 
-export default HeroCatalog
+export default withStyles(styles)(HeroCatalog)
