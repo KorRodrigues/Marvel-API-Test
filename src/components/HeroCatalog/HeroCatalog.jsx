@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Chip from '@material-ui/core/Chip'
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 
@@ -52,13 +54,13 @@ class HeroCatalog extends Component {
 					} = props
 
 		if(isRequesting)
-			return <div>Loading...</div> // TODO create loading component
+			return <CircularProgress />
 
 		if(error)
-			return <div>{error}</div> // TODO create error component
+			return <Chip color="secondary" label={error} />
 
-		if(!heroesList)
-			return <div>Not found</div> // TODO not fount
+		if(!heroesList.length)
+			return <Chip color="secondary" label="Nenhum resultado encontrado" />
 
 		return (
 			<main>

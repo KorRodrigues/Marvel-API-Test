@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Card from '@material-ui/core/Card'
+import Chip from '@material-ui/core/Chip'
+
 class HeroPage extends Component {
 	constructor(props) {
 		super(props)
@@ -73,10 +77,10 @@ class HeroPage extends Component {
 					} = props
 
 		if(!alreadyFetched || loading)
-			return <div>Loading...</div> //TODO tela de loading
+			return <CircularProgress />
 
 		if(error)
-			return <div>{error}</div> //TODO tela de erro
+			return <Chip color="secondary" label={error} />
 
 		const {
 						// id,
@@ -91,32 +95,34 @@ class HeroPage extends Component {
 
 		return (
 			<main>
-				<form onSubmit={handleSubmit}>
-					<input
-						type="text"
-						name="name"
-						value={name}
-						onChange={handleChangeInputText}
-					/>
-					<input
-						type="text"
-						name="description"
-						value={description}
-						onChange={handleChangeInputText}
-					/>
-					<input
-						type="text"
-						name="description"
-						value={thumbnailUrl}
-						onChange={handleChangeThumbnail}
-					/>
-					<img
-						src={thumbnailUrl}
-						width="50"
-						alt={name}
-					/>
-					<button type="submit">Editar</button>
-				</form>
+				<Card>
+					<form onSubmit={handleSubmit}>
+						<input
+							type="text"
+							name="name"
+							value={name}
+							onChange={handleChangeInputText}
+						/>
+						<input
+							type="text"
+							name="description"
+							value={description}
+							onChange={handleChangeInputText}
+						/>
+						<input
+							type="text"
+							name="description"
+							value={thumbnailUrl}
+							onChange={handleChangeThumbnail}
+						/>
+						<img
+							src={thumbnailUrl}
+							width="50"
+							alt={name}
+						/>
+						<button type="submit">Editar</button>
+					</form>
+				</Card>
 			</main>
 		)
 	}
