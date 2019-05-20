@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -55,6 +56,11 @@ const HeroCard = ({id, name, thumbnail, classes}) => {
 	)
 }
 
-//TODO add proptypes
+HeroCard.propTypes = {
+	id: PropTypes.number.isRequired,
+	name: PropTypes.string,
+	thumbnail: PropTypes.object,
+	classes: PropTypes.object.isRequired,
+}
 
 export default withStyles(styles)(HeroCard)

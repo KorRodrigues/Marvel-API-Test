@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { withStyles } from '@material-ui/core'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -12,6 +13,8 @@ import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import Paper from '@material-ui/core/Paper'
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs'
 import Button from '@material-ui/core/Button'
 import EditIcon from '@material-ui/icons/Edit'
 
@@ -52,9 +55,19 @@ class HeroPage extends Component {
 
 		return (
 			<main>
+				<Paper className={classes.paper}>
+					<Breadcrumbs aria-label="Breadcrumb">
+						<Link color="inherit" to="/" className={classes.link}>
+							Heróis
+						</Link>
+						<Typography color="textPrimary">
+							{name}
+						</Typography>
+					</Breadcrumbs>
+				</Paper>
 				<Card>
      			<CardContent>
-						<Grid container spacing={16}justify="center">
+						<Grid container spacing={16} justify="center">
 							<Grid item xs={12} md={6} lg={5}>
 								<CardMedia
 									component="img"
@@ -104,6 +117,21 @@ class HeroPage extends Component {
 	}
 }
 
-//TODO add proptypes
+HeroPage.propTypes = {
+	id: PropTypes.number,
+	heroId: PropTypes.oneOfType([
+    PropTypes.string,
+		PropTypes.number,
+	]).isRequired,
+	alreadyFetched: PropTypes.bool,
+	loading: PropTypes.bool,
+	error: PropTypes.string,
+	name: PropTypes.string,
+	description: PropTypes.string,
+	series: PropTypes.object,
+	thumbnail: PropTypes.object,
+	classes: PropTypes.object.isRequired,
+	requestHero: PropTypes.func.isRequired,
+}
 
 export default withStyles(styles)(HeroPage)

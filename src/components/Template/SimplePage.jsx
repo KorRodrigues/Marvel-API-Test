@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -48,5 +49,10 @@ const SimplePage = ({children, classes}) => (
 		</footer>
   </div>
 )
+
+SimplePage.propTypes = {
+	children: PropTypes.node.isRequired,
+	classes: PropTypes.object.isRequired,
+}
 
 export default withStyles(styles)(SimplePage)

@@ -8,7 +8,6 @@ class List extends Component {
 			<nav>
 				<Grid
 					container
-					spacing={8}
 					justify="flex-end"
 					role="navigation"
 					itemScope

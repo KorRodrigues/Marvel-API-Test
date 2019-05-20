@@ -14,6 +14,7 @@ const styles = theme => ({
 		},
 	},
 	content: {
+		minHeight: 'calc(100vh - 85px)',
 		paddingTop: '130px',
 		paddingBottom: '50px',
 	},

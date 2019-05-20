@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Chip from '@material-ui/core/Chip'
+import Paper from '@material-ui/core/Paper'
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs'
+import Typography from '@material-ui/core/Typography'
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 
@@ -13,11 +18,7 @@ import PaginationList from '../Pagination/view/List'
 import PaginationListItem from '../Pagination/view/Item'
 import HeroCard from './HeroCardConnected'
 
-const styles = theme => ({
-	footer: {
-		marginTop: 32,
-	}
-})
+import styles from './HeroCatalogStyle'
 
 class HeroCatalog extends Component {
 	constructor(props) {
@@ -51,6 +52,7 @@ class HeroCatalog extends Component {
 						changeCatalogPage,
 						location,
 						classes,
+						match:{params:{ name: findName }},
 					} = props
 
 		if(isRequesting)
@@ -64,6 +66,18 @@ class HeroCatalog extends Component {
 
 		return (
 			<main>
+				{findName &&
+					<Paper className={classes.paper}>
+						<Breadcrumbs aria-label="Breadcrumb">
+							<Link color="inherit" to="/" className={classes.link}>
+								Heróis
+							</Link>
+							<Typography color="textPrimary">
+								Busca: {findName}
+							</Typography>
+						</Breadcrumbs>
+					</Paper>
+				}
 				<section>
 					<Grid container spacing={16}>
 						{heroesList.map((hero, index) =>
@@ -98,6 +112,17 @@ class HeroCatalog extends Component {
 	}
 }
 
-// Todo add proptypes
+HeroCatalog.propTypes = {
+	page: PropTypes.number,
+	match: PropTypes.object.isRequired,
+	requestCatalog: PropTypes.func.isRequired,
+	changeCatalogPage: PropTypes.func.isRequired,
+	heroesList: PropTypes.array,
+	heroesTotal: PropTypes.number,
+	isRequesting: PropTypes.bool,
+	error: PropTypes.string,
+	location: PropTypes.object.isRequired,
+	classes: PropTypes.object.isRequired,
+}
 
 export default withStyles(styles)(HeroCatalog)

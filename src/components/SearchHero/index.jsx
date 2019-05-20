@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
@@ -46,11 +46,11 @@ class SearchHero extends Component {
 		return (
 			<form onSubmit={handleSubmit}>
 				<TextField
+					type="text"
 					value={formValue}
 					onChange={handleValueChange}
 
-					label="Buscar heroi"
-					type="text"
+					label="Buscar herói"
 					fullWidth
 					InputLabelProps={{
 						classes: {
