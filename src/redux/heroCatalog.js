@@ -71,7 +71,7 @@ export const requestCatalog = (page = 1, searchTerm = '') => {
 				dispatch({
 					type: CATALOG_REQUEST_ERROR,
 					catalogRequestError:
-						'Houve um erro ao buscar os herois, Tony Stark logo resolverá isso :D',
+						'Houve um erro ao buscar os heróis, Tony Stark logo resolverá isso :D',
 				})
 		})
   }

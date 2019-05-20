@@ -190,13 +190,10 @@ PaginationContainer.defaultProps = {
 			<use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#icon-arrow-right" />
 		</svg>
 	),
-	PageAbreviation: key => (
-		<li
-			className="bf-pagination__item bf-pagination__item--abreviation"
-			key={key}
-		>
+	PageAbreviation: () => (
+		<div>
 			<span className="bf-pagination__link">…</span>
-		</li>
+		</div>
 	),
 }
 
