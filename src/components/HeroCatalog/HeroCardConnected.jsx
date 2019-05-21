@@ -11,6 +11,8 @@ const mapStateToProps =  ({ heroesData }, ownProps) => {
 		name = heroData.name
 		thumbnail = heroData.thumbnail
 	}
+	if(thumbnail)
+		thumbnail = `${thumbnail.path}${thumbnail.extension ? `.${thumbnail.extension}` : ''}`
 
 	return {
 		name,

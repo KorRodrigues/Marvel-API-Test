@@ -31,6 +31,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 * Create an common styles file
 * Replace fixed spacing in px to spacing variable
+* Improve tests
 * Create an smart breadcrumb component
 * Improve data fetch with Apollo+GraphQl
 * When GraphQL is implemented, make all components data agnostic
