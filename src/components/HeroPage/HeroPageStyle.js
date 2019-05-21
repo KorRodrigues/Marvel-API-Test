@@ -21,6 +21,9 @@ const styles = theme => ({
 			marginLeft: 15,
 		}
 	},
+	pre: {
+    whiteSpace: 'pre-wrap',
+	}
 })
 
 export default styles

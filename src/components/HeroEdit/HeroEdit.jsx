@@ -15,6 +15,7 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs'
 import Typography from '@material-ui/core/Typography'
 
 import styles from './HeroEditStyles'
+import { history } from '../../store'
 
 class HeroEdit extends Component {
 	constructor(props) {
@@ -42,9 +43,13 @@ class HeroEdit extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		const changeHeroDetail = this.props.changeHeroDetail
+		const { changeHeroDetail, heroId } = this.props
 
-		changeHeroDetail(this.props.heroId, this.state)
+		changeHeroDetail(heroId, this.state)
+
+		history.push({
+			pathname: `/character/${heroId}`
+		})
 	}
 
 	handleChangeInputText = (e) =>

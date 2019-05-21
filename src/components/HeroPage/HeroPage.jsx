@@ -89,7 +89,12 @@ class HeroPage extends Component {
 									</Link>
 									{name}
         				</Typography>
-								<Typography variant="body1" component="h1" gutterBottom>
+								<Typography
+									variant="body1"
+									component="h1"
+									gutterBottom
+									className={classes.pre}
+								>
 									{description}
         				</Typography>
 								{series_arr && !!series_arr.length &&
