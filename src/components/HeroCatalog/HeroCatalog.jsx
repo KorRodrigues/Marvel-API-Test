@@ -24,18 +24,18 @@ class HeroCatalog extends Component {
 	constructor(props) {
 		super(props)
 		// Will mount
-		const {page, match:{params:{ name }}} = this.props
-		props.requestCatalog(page, name)
+		const {page, searchName} = this.props
+		props.requestCatalog(page, searchName)
 	}
 
 	componentDidUpdate(prevProps) {
-		const {changeCatalogPage, requestCatalog, page, match: {params:{ name }}} = this.props
+		const {changeCatalogPage, requestCatalog, page, searchName} = this.props
 
 		if(prevProps.page !== page)
-			requestCatalog(page, name)
-		if(prevProps.match.params.name !== name) {
+			requestCatalog(page, searchName)
+		if(prevProps.match.params.name !== searchName) {
 			changeCatalogPage(1)
-			requestCatalog(1, name)
+			requestCatalog(1, searchName)
 		}
 	}
 
@@ -52,7 +52,7 @@ class HeroCatalog extends Component {
 						changeCatalogPage,
 						location,
 						classes,
-						match:{params:{ name: findName }},
+						searchName,
 					} = props
 
 		if(isRequesting)
@@ -66,14 +66,14 @@ class HeroCatalog extends Component {
 
 		return (
 			<main>
-				{findName &&
+				{searchName &&
 					<Paper className={classes.paper}>
 						<Breadcrumbs aria-label="Breadcrumb">
 							<Link color="inherit" to="/" className={classes.link}>
 								Heróis
 							</Link>
 							<Typography color="textPrimary">
-								Busca: {findName}
+								Busca: {searchName}
 							</Typography>
 						</Breadcrumbs>
 					</Paper>
@@ -97,7 +97,7 @@ class HeroCatalog extends Component {
 							curPage={page}
 							itemsMax={heroesTotal}
 							itemsPerPage={marvelConfig.itemsPerPage}
-							href={location.pathname}
+							href={location ? location.pathname : ''}
 							changePage={changeCatalogPage}
 							Item={PaginationListItem}
 							List={PaginationList}
@@ -114,14 +114,14 @@ class HeroCatalog extends Component {
 
 HeroCatalog.propTypes = {
 	page: PropTypes.number,
-	match: PropTypes.object.isRequired,
+	searchName: PropTypes.string,
 	requestCatalog: PropTypes.func.isRequired,
 	changeCatalogPage: PropTypes.func.isRequired,
 	heroesList: PropTypes.array,
 	heroesTotal: PropTypes.number,
 	isRequesting: PropTypes.bool,
 	error: PropTypes.string,
-	location: PropTypes.object.isRequired,
+	location: PropTypes.object,
 	classes: PropTypes.object.isRequired,
 }
 

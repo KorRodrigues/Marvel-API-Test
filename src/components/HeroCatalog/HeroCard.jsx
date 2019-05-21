@@ -15,8 +15,7 @@ import styles from './HeroCardStyle'
 
 const HeroCard = ({id, name, thumbnail, classes}) => {
 	const viewUrl = `/character/${id}`,
-				editUrl = `/character/edit/${id}`,
-				thumbUrl = `${thumbnail.path}${thumbnail.extension ? `.${thumbnail.extension}` : ''}`
+				editUrl = `/character/edit/${id}`
 
 	return (
 		<Card>
@@ -24,7 +23,7 @@ const HeroCard = ({id, name, thumbnail, classes}) => {
 				<Link to={viewUrl} className={classes.cardLink}>
 					<CardMedia
 						className={classes.cardMedia}
-						image={thumbUrl}
+						image={thumbnail}
 						title={name}
 					/>
 					<CardContent>
@@ -59,7 +58,7 @@ const HeroCard = ({id, name, thumbnail, classes}) => {
 HeroCard.propTypes = {
 	id: PropTypes.number.isRequired,
 	name: PropTypes.string,
-	thumbnail: PropTypes.object,
+	thumbnail: PropTypes.string,
 	classes: PropTypes.object.isRequired,
 }
 
