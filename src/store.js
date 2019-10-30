@@ -6,7 +6,9 @@ import {createBrowserHistory} from 'history'
 import rootReducer from './redux'
 
 
-export const history = createBrowserHistory()
+export const history = createBrowserHistory({
+	basename: '/Marvel-API-Test'
+})
 
 const initialState = {}
 const enhancers = []
