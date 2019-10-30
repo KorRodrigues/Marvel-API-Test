@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/Marvel-API-Test/static/js/main.3f0bc98e.chunk.js",
+    "main.js.map": "/Marvel-API-Test/static/js/main.3f0bc98e.chunk.js.map",
+    "runtime~main.js": "/Marvel-API-Test/static/js/runtime~main.36f50164.js",
+    "runtime~main.js.map": "/Marvel-API-Test/static/js/runtime~main.36f50164.js.map",
+    "static/js/2.50667b3d.chunk.js": "/Marvel-API-Test/static/js/2.50667b3d.chunk.js",
+    "static/js/2.50667b3d.chunk.js.map": "/Marvel-API-Test/static/js/2.50667b3d.chunk.js.map",
+    "index.html": "/Marvel-API-Test/index.html",
+    "precache-manifest.d74970e6429d6c587c3d04a98d49dae2.js": "/Marvel-API-Test/precache-manifest.d74970e6429d6c587c3d04a98d49dae2.js",
+    "service-worker.js": "/Marvel-API-Test/service-worker.js"
+  }
+}
