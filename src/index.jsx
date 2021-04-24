@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
@@ -20,25 +20,27 @@ const element = document.querySelector('#root');
 
 if (element) {
 	render(
-		<Provider store={store}>
-			<ConnectedRouter history={history}>
-    		<MuiThemeProvider theme={getCustomTheme()}>
-     			<CssBaseline />
+		<Router>
+			<Provider store={store}>
+				<ConnectedRouter history={history}>
+					<MuiThemeProvider theme={getCustomTheme()}>
+						<CssBaseline />
 
-					<SimplePage>
+						<SimplePage>
 
-						<Switch>
-							<Route exact path="/character/edit/:heroId" component={HeroEdit} />
-							<Route exact path="/character/:heroId" component={HeroPage} />
-							<Route exact path="/:name" component={HeroCatalog} />
-							<Route exact path="/" component={HeroCatalog} />
-							<Route component={() => "PAGE 404"} /> {/* TODO 404 */}
-						</Switch>
+							<Switch>
+									<Route exact path="/character/edit/:heroId" component={HeroEdit} />
+									<Route exact path="/character/:heroId" component={HeroPage} />
+									<Route exact path="/:name" component={HeroCatalog} />
+									<Route exact path="/" component={HeroCatalog} />
+									<Route component={() => "PAGE 404"} /> {/* TODO 404 */}
+							</Switch>
 
-					</SimplePage>
-				</MuiThemeProvider>
-			</ConnectedRouter>
-		</Provider>,
+						</SimplePage>
+					</MuiThemeProvider>
+				</ConnectedRouter>
+			</Provider>
+		</Router>,
 		element
 	)
 }
